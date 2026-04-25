@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+  <title>Yegarnure | Ethiopian Artisan Carpets — Vibrant Woven Heritage</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, #FDF7ED 0%, #FCF2E3 100%);
+      color: #2C2418;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* Ethiopian vibrant palette */
+    :root {
+      --terracotta: #E05A3A;
+      --honey-glow: #F4A623;
+      --deep-teal: #1E6B6B;
+      --saffron: #FFB347;
+      --berry: #C33C54;
+      --gold-leaf: #D4AF37;
+      --cream-bg: #FFF8EF;
+      --charcoal: #2E2A24;
+      --olive-green: #6B8C42;
+      --plum: #7B2D6E;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #F0E2D0; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb { background: var(--terracotta); border-radius: 10px; }
+
+    /* Colorful Animated Shapes Background */
+    .shape-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .color-shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.3;
+      animation: floatShape 22s infinite alternate ease-in-out;
+    }
+    .shape-crimson { background: radial-gradient(circle, #E05A3A, #C33C54); width: 400px; height: 400px; top: -100px; left: -120px; }
+    .shape-gold { background: radial-gradient(circle, #F4A623, #D4AF37); width: 450px; height: 450px; bottom: -80px; right: -80px; animation-delay: -4s; }
+    .shape-teal { background: radial-gradient(circle, #1E6B6B, #2A9D8F); width: 350px; height: 350px; top: 40%; left: 75%; animation-delay: -7s; }
+    .shape-saffron { background: radial-gradient(circle, #FFB347, #F4A623); width: 300px; height: 300px; bottom: 15%; left: 5%; animation-duration: 25s; }
+    .shape-plum { background: radial-gradient(circle, #7B2D6E, #C33C54); width: 320px; height: 320px; top: 65%; right: 10%; animation-delay: -10s; }
+    .shape-olive { background: radial-gradient(circle, #6B8C42, #8BAE5A); width: 280px; height: 280px; top: 15%; left: 50%; animation-delay: -3s; }
+    
+    @keyframes floatShape {
+      0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+      100% { transform: translate(70px, -60px) rotate(12deg) scale(1.15); }
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    /* Navigation - Fully Responsive */
+    .carpet-nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(253, 247, 237, 0.96);
+      backdrop-filter: blur(12px);
+    }
+    .nav-border-weave {
+      height: 4px;
+      background: repeating-linear-gradient(90deg, 
+        var(--terracotta) 0px, var(--terracotta) 10px,
+        var(--honey-glow) 10px, var(--honey-glow) 20px,
+        var(--deep-teal) 20px, var(--deep-teal) 30px,
+        var(--saffron) 30px, var(--saffron) 40px,
+        var(--berry) 40px, var(--berry) 50px);
+      background-size: 50px 4px;
+    }
+    .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
+    .nav-main {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0 14px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--terracotta), var(--honey-glow), var(--deep-teal), var(--plum));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-icon {
+      font-size: 1.6rem;
+      color: var(--terracotta);
+      animation: softPulse 2s infinite;
+    }
+    @keyframes softPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.05); } }
+    .logo small { font-size: 0.6rem; font-family: 'Inter', sans-serif; background: none; color: var(--deep-teal); font-weight: 500; }
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      background: rgba(237, 224, 208, 0.6);
+      padding: 6px 16px;
+      border-radius: 60px;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(224, 90, 58, 0.25);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .nav-link {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: clamp(0.75rem, 3vw, 0.9rem);
+      color: var(--charcoal);
+      padding: 8px 18px;
+      border-radius: 40px;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-link i { font-size: 0.8rem; color: var(--terracotta); transition: 0.2s; }
+    .nav-link:hover { background: var(--terracotta); color: white; transform: translateY(-3px); box-shadow: 0 8px 16px rgba(224, 90, 58, 0.3); }
+    .nav-link:hover i { color: white; }
+    .nav-link.active { background: linear-gradient(135deg, var(--deep-teal), var(--olive-green)); color: white; }
+    .nav-link.active i { color: var(--honey-glow); }
+    .nav-fringe-dots { display: flex; justify-content: center; gap: 6px; padding: 6px 0 4px; flex-wrap: wrap; }
+    .nav-fringe-dots span { width: 5px; height: 5px; background: var(--honey-glow); border-radius: 50%; opacity: 0.7; }
+
+    @media (max-width: 768px) {
+      .nav-main { flex-direction: column; }
+      .nav-links { padding: 10px 15px; gap: 5px; width: 100%; justify-content: center; }
+      .nav-link { padding: 6px 12px; }
+      .nav-link i { display: none; }
+    }
+    @media (max-width: 480px) {
+      .nav-link { padding: 5px 10px; font-size: 0.7rem; }
+    }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, var(--terracotta), var(--berry));
+      color: white;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all 0.3s;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(192, 70, 50, 0.35);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 15px 30px rgba(224, 90, 58, 0.45); background: linear-gradient(135deg, var(--berry), var(--terracotta)); }
+
+    /* Hero */
+    .hero { padding: 60px 0 100px; }
+    .hero-grid { display: flex; flex-wrap: wrap; align-items: center; gap: 50px; }
+    .hero-content { flex: 1.2; }
+    .hero-badge {
+      background: linear-gradient(135deg, rgba(244, 166, 35, 0.2), rgba(224, 90, 58, 0.1));
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 20px;
+      border-radius: 60px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      margin-bottom: 25px;
+      border-left: 4px solid var(--honey-glow);
+    }
+    .hero-content h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      line-height: 1.15;
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    .hero-content h1 .ethio-highlight { 
+      background: linear-gradient(135deg, var(--terracotta), var(--honey-glow));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+    .hero-content p { font-size: clamp(0.9rem, 3.5vw, 1.1rem); color: #5A4E40; margin-bottom: 30px; max-width: 550px; line-height: 1.5; }
+    .hero-stats { display: flex; gap: clamp(20px, 5vw, 50px); margin-top: 45px; flex-wrap: wrap; }
+    .stat-item h4 { font-size: clamp(1.3rem, 4vw, 1.8rem); font-family: 'Playfair Display', serif; background: linear-gradient(135deg, var(--deep-teal), var(--olive-green)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .stat-item p { font-size: 0.8rem; font-weight: 600; color: var(--charcoal); }
+
+    /* Side Image */
+    .hero-side-image { flex: 1; display: flex; justify-content: center; align-items: center; }
+    .image-frame {
+      background: linear-gradient(145deg, #E8D9C5, #DCC8AE);
+      border-radius: 40px;
+      padding: 20px;
+      box-shadow: 25px 30px 45px rgba(0,0,0,0.1);
+      position: relative;
+      transition: all 0.4s ease;
+    }
+    .image-frame:hover { transform: translateY(-10px) rotate(1deg); }
+    .image-frame::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      right: 20px;
+      height: 10px;
+      background: repeating-linear-gradient(90deg, var(--terracotta), var(--terracotta) 8px, var(--honey-glow) 8px, var(--honey-glow) 16px, var(--gold-leaf) 16px, var(--gold-leaf) 24px);
+      border-radius: 6px 6px 0 0;
+    }
+    .image-frame::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      right: 20px;
+      height: 10px;
+      background: repeating-linear-gradient(90deg, var(--honey-glow), var(--honey-glow) 8px, var(--terracotta) 8px, var(--terracotta) 16px, var(--gold-leaf) 16px, var(--gold-leaf) 24px);
+      border-radius: 0 0 6px 6px;
+    }
+    .hero-image {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      border-radius: 28px;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+      box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid { flex-direction: column; text-align: center; }
+      .hero-content p { margin-left: auto; margin-right: auto; }
+      .hero-stats { justify-content: center; }
+      .hero-side-image { order: -1; }
+    }
+
+    /* Section Headers */
+    .section-head { text-align: center; margin: 60px 0 45px; }
+    .section-head h2 {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-family: 'Playfair Display', serif;
+      display: inline-block;
+      background: linear-gradient(135deg, var(--terracotta), var(--deep-teal), var(--plum));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      border-bottom: 4px solid var(--honey-glow);
+      padding-bottom: 12px;
+    }
+    .section-head p { color: #6B5A48; margin-top: 16px; font-size: clamp(0.9rem, 3vw, 1rem); }
+
+    /* Collection Cards */
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 40px;
+      margin: 30px 0;
+    }
+    .carpet-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(2px);
+      border-radius: 40px;
+      overflow: hidden;
+      transition: all 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+      border: 1px solid rgba(224, 90, 58, 0.2);
+    }
+    .carpet-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 35px 55px -15px rgba(0,0,0,0.25);
+      border-color: var(--honey-glow);
+    }
+    .card-img {
+      height: 280px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      transition: transform 0.5s ease;
+    }
+    .carpet-card:hover .card-img { transform: scale(1.03); }
+    .card-img::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(to top, rgba(0,0,0,0.25), transparent);
+    }
+    .card-content { padding: 26px; }
+    .card-content h3 { font-size: 1.6rem; font-family: 'Playfair Display', serif; background: linear-gradient(135deg, var(--terracotta), var(--deep-teal)); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 8px; }
+    .price {
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--berry), var(--honey-glow));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-size: 1.4rem;
+      margin: 12px 0;
+    }
+    .origin-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #F7EFE4, #FDF3E6);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--deep-teal);
+    }
+
+    /* Heritage */
+    .heritage-wrap {
+      background: linear-gradient(135deg, #F7EFE6, #FEF5EA);
+      border-radius: 60px;
+      margin: 70px 0;
+      padding: 60px 50px;
+      border: 1px solid rgba(244, 166, 35, 0.3);
+    }
+    .heritage-flex { display: flex; flex-wrap: wrap; gap: 55px; align-items: center; }
+    .heritage-text h3 { font-size: clamp(1.6rem, 5vw, 2.2rem); font-family: 'Playfair Display', serif; background: linear-gradient(135deg, var(--terracotta), var(--deep-teal)); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 20px; }
+    .heritage-text p { margin-bottom: 20px; line-height: 1.6; color: #4A3B2E; }
+
+    /* Testimonials */
+    .testimonial-grid {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 50px 0;
+    }
+    .testi-card {
+      background: white;
+      border-radius: 48px;
+      padding: 32px;
+      max-width: 320px;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.04);
+      border-left: 6px solid var(--honey-glow);
+      transition: all 0.3s;
+    }
+    .testi-card:hover { transform: translateY(-8px); box-shadow: 0 30px 45px rgba(0,0,0,0.1); }
+    .testi-card i { background: linear-gradient(135deg, var(--terracotta), var(--honey-glow)); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: 2rem; margin-bottom: 16px; display: block; }
+
+    /* CTA */
+    .cta-block {
+      background: linear-gradient(135deg, #1E6B6B, #2A4A4A, #7B2D6E);
+      border-radius: 60px;
+      padding: 60px 40px;
+      margin: 60px 0 80px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-block::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: -30%;
+      width: 160%;
+      height: 160%;
+      background: radial-gradient(circle, rgba(244,166,35,0.15), transparent);
+      animation: rotateBg 25s linear infinite;
+    }
+    @keyframes rotateBg { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .cta-block h3 { font-size: clamp(1.6rem, 5vw, 2.5rem); font-family: 'Playfair Display', serif; position: relative; z-index: 1; }
+
+    /* Footer */
+    footer {
+      background: #2E241E;
+      color: #E5D5C0;
+      padding: 55px 0 30px;
+      border-radius: 50px 50px 0 0;
+    }
+    .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; }
+    .social i { font-size: 1.5rem; margin-right: 22px; transition: 0.25s; color: #E0CDB8; }
+    .social i:hover { color: var(--honey-glow); transform: translateY(-4px); }
+
+    @media (max-width: 768px) {
+      .heritage-wrap { padding: 35px 25px; }
+      .cta-block { padding: 40px 25px; }
+      .footer-grid { flex-direction: column; text-align: center; gap: 30px; }
+      .collection-grid { gap: 25px; }
+    }
+    @media (max-width: 480px) {
+      .card-img { height: 220px; }
+      .card-content { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Colorful Animated Shapes Background -->
+<div class="shape-bg">
+  <div class="color-shape shape-crimson"></div>
+  <div class="color-shape shape-gold"></div>
+  <div class="color-shape shape-teal"></div>
+  <div class="color-shape shape-saffron"></div>
+  <div class="color-shape shape-plum"></div>
+  <div class="color-shape shape-olive"></div>
+</div>
+
+<!-- Navigation -->
+<div class="carpet-nav">
+  <div class="nav-border-weave"></div>
+  <div class="nav-container">
+    <div class="nav-main">
+      <div class="logo">
+        <span class="logo-icon">⌗</span> YEGARNURE <small>— handwoven · Ethiopia</small>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="nav-link active"><i class="fas fa-home"></i> Home</a>
+        <a href="#collection" class="nav-link"><i class="fas fa-carpet"></i> Weaves</a>
+        <a href="#heritage" class="nav-link"><i class="fas fa-hands"></i> Heritage</a>
+        <a href="#voices" class="nav-link"><i class="fas fa-comment-dots"></i> Voices</a>
+        <a href="#contact" class="nav-link"><i class="fas fa-feather-alt"></i> Connect</a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-fringe-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="nav-border-weave"></div>
+</div>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+        <div class="hero-badge"><i class="fas fa-hand-sparkles"></i> Masterweavers of Ethiopia</div>
+        <h1>Where <span class="ethio-highlight">Ethiopian Threads</span><br>Become Heirlooms</h1>
+        <p>Yegarnure carpets are hand-knotted with natural wool, plant dyes, and centuries-old techniques. Each rug carries the vibrant soul of the highlands.</p>
+        <a href="#collection" class="btn-primary"><i class="fas fa-eye"></i> Discover Carpets</a>
+        <div class="hero-stats">
+          <div class="stat-item" data-aos="fade-up" data-aos-delay="150"><h4>850+</h4><p>Artisan hands</p></div>
+          <div class="stat-item" data-aos="fade-up" data-aos-delay="250"><h4>100%</h4><p>Natural fibers</p></div>
+          <div class="stat-item" data-aos="fade-up" data-aos-delay="350"><h4>🇪🇹</h4><p>Ethiopian pride</p></div>
+        </div>
+      </div>
+      <div class="hero-side-image" data-aos="fade-left" data-aos-duration="1000">
+        <div class="image-frame">
+          <img src="images/logo.jpg" alt="Yegarnure Ethiopian Artisan Carpet" class="hero-image" onerror="this.onerror=null; this.style.background='linear-gradient(135deg, #C9AF85, #B88754)'; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 300\'%3E%3Crect width=\'400\' height=\'300\' fill=\'%23E8D5B5\'/%3E%3Cpolygon points=\'200,50 320,120 320,230 200,290 80,230 80,120\' fill=\'%23E05A3A\' opacity=\'0.8\'/%3E%3Ccircle cx=\'200\' cy=\'170\' r=\'55\' fill=\'%23F4A623\'/%3E%3Crect x=\'160\' y=\'125\' width=\'80\' height=\'90\' fill=\'%231E6B6B\' opacity=\'0.8\'/%3E%3C/svg%3E';">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collections -->
+  <div class="container" id="collection">
+    <div class="section-head" data-aos="fade-up" data-aos-duration="800">
+      <h2>✦ Masterweave Collection ✦</h2>
+      <p>Handcrafted motifs — each carpet tells a story</p>
+    </div>
+    <div class="collection-grid">
+      <div class="carpet-card" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100">
+        <div class="card-img" style="background-image: url('images/mat1.jpg');"></div>
+        <div class="card-content">
+          <h3>Turkey carpet</h3>
+          <p>Hand-spun wool, geometric patterns.</p>
+          <div class="price">15000 – 30000 Birr</div>
+          <div class="origin-badge"><i class="fas fa-mountain"></i> turkey Atelier</div>
+        </div>
+      </div>
+      <div class="carpet-card" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
+        <div class="card-img" style="background-image: url('images/mat2.jpg');"></div>
+        <div class="card-content">
+          <h3>turkey Twilight</h3>
+          <p>Deep indigo & terracotta, ancient dye secrets.</p>
+          <div class="price">10000 – 20000 Birr</div>
+          <div class="origin-badge"><i class="fas fa-landmark"></i>turkey</div>
+        </div>
+      </div>
+      <div class="carpet-card" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="300">
+        <div class="card-img" style="background-image: url('images/mat3.jpg');"></div>
+        <div class="card-content">
+          <h3>welcome mat</h3>
+          <p>made from Ethiopia</p>
+          <div class="price">280 – 490 birr</div>
+          <div class="origin-badge"><i class="fas fa-leaf"></i> Sustainable dye</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Heritage -->
+  <div class="container" id="heritage">
+    <div class="heritage-wrap" data-aos="flip-up" data-aos-duration="900">
+      <div class="heritage-flex">
+        <div class="heritage-text" data-aos="fade-right" data-aos-duration="800">
+          <h3><i class="fas fa-hands-praying"></i> Woven by Generations, Treasured Worldwide</h3>
+          <p>Yegarnure (የገርኑረ) means “of the homeland.” Our carpets are born in family cooperatives across Addis Ababa, Bahir Dar, and Harar. Using local sheep wool, madder root, and indigo, every rug takes weeks of patient hand-knotting.</p>
+          <p>Owning a Yegarnure carpet means preserving an ancient Ethiopian craft and supporting 100+ artisan families with dignity, fair wages, and cultural pride.</p>
+          <a href="#" class="btn-outline" style="background: transparent; border:2px solid var(--terracotta); color:var(--terracotta); padding: 10px 28px; border-radius: 50px; text-decoration: none; display: inline-flex; gap:10px; font-weight:600;">Our Promise <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div style="flex:1; background: linear-gradient(135deg, #E8D5C0, #DCC8AE); border-radius: 50px; min-height: 240px; display: flex; align-items:center; justify-content:center;" data-aos="fade-left" data-aos-duration="800">
+          <i class="fas fa-spa" style="font-size: 4rem; background: linear-gradient(135deg, var(--terracotta), var(--honey-glow)); -webkit-background-clip: text; background-clip: text; color: transparent; opacity: 0.8;"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="container" id="voices">
+    <div class="section-head" data-aos="fade-up" data-aos-duration="800">
+      <h2>✦ Carpet Whispers ✦</h2>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testi-card" data-aos="flip-left" data-aos-duration="600" data-aos-delay="100"><i class="fas fa-quote-right"></i><p>"The texture and organic colors of my Yegarnure rug transport me to the Ethiopian highlands. A true heirloom."</p><strong>— Selam A., Addis</strong></div>
+      <div class="testi-card" data-aos="flip-left" data-aos-duration="600" data-aos-delay="200"><i class="fas fa-quote-right"></i><p>"Exceptional craftsmanship. The Semien Highlands rug is soft, durable, and absolutely stunning."</p><strong>— Michael G., London</strong></div>
+      <div class="testi-card" data-aos="flip-left" data-aos-duration="600" data-aos-delay="300"><i class="fas fa-quote-right"></i><p>"As a designer, I’ve never seen such authentic, ethical luxury. Yegarnure is unmatched."</p><strong>— Hanna D., Nairobi</strong></div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="container">
+    <div class="cta-block" data-aos="zoom-in-up" data-aos-duration="1000">
+      <h3>Bring Ethiopian Elegance Home</h3>
+      <p style="margin: 18px auto; max-width: 500px; font-size: 1rem;">Custom sizes, worldwide shipping, and direct connection to our masterweavers.</p>
+      <a href="#" class="btn-primary" style="background: var(--honey-glow); color: #2C2418; box-shadow: 0 8px 20px rgba(244,166,35,0.4);"><i class="fas fa-feather-alt"></i> Commission a Carpet</a>
+    </div>
+  </div>
+</main>
+
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div data-aos="fade-up" data-aos-duration="500"><h4 style="color: #F4A623; font-size: 1.3rem;">Yegarnure</h4><p>Addis Ababa, Bole Medhanealem<br>+251-911-456789</p></div>
+      <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100"><h4 style="color: #F4A623;">Explore</h4><p><a href="#" style="color:#E0CDB8; text-decoration:none;">Collections</a><br><a href="#" style="color:#E0CDB8; text-decoration:none;">Custom Orders</a><br><a href="#" style="color:#E0CDB8; text-decoration:none;">Artisan Program</a></p></div>
+      <div class="social" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200"><h4 style="color: #F4A623;">Weave Stories</h4><i class="fab fa-instagram"></i><i class="fab fa-facebook-f"></i><i class="fab fa-pinterest"></i><p style="margin-top: 20px;">hello@yegarnure.et</p></div>
+    </div>
+    <div style="text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid #5C4A38; font-size: 0.8rem;">© 2025 Yegarnure — Ethiopian Handwoven Carpets | የኢትዮጵያ እጅ ሥራ | Vibrant Heritage</div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ once: true, offset: 80, duration: 800, easing: 'ease-out-quad' });
+
+  // Active nav highlight
+  const sections = document.querySelectorAll("section, div[id]");
+  const navLinks = document.querySelectorAll(".nav-link");
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 200;
+      if (scrollY >= sectionTop) current = section.getAttribute("id");
+    });
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      const href = link.getAttribute("href").substring(1);
+      if (href === current) link.classList.add("active");
+      if (href === "" && current === "") link.classList.add("active");
+    });
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = this.getAttribute('href');
+      if (target === "#" || target === "") return;
+      const el = document.querySelector(target);
+      if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+</body>
+</html>
